@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Random Team Picker</title>
+</head>
+<body style="font-family:Arial;text-align:center;margin-top:50px;">
+  <h2>Your Team Number Is:</h2>
+  <h1 id="team" style="font-size:80px;"></h1>
+<script>
+  const teams = 4; // 👈 CHANGE THIS TO THE NUMBER OF TEAMS
+  let n = Math.floor(Math.random() * teams) + 1;
+  document.getElementById("team").innerText = n;
+</script>
+</body>
+</html>
