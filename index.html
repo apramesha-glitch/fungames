@@ -1,16 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Random Team Picker</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      background: #f5f5f5;
+    }
+    .container {
+      padding: 20px;
+    }
+    h2 {
+      font-size: 6vw;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-size: 15vw;
+      margin: 0;
+      font-weight: bold;
+    }
+
+    @media (min-width: 600px) {
+      h2 { font-size: 2rem; }
+      h1 { font-size: 6rem; }
+    }
+  </style>
 </head>
-<body style="font-family:Arial;text-align:center;margin-top:50px;">
-  <h2>Your Team Number Is:</h2>
-  <h1 id="team" style="font-size:80px;"></h1>
+<body>
+  <div class="container">
+    <h2>Your Team:</h2>
+    <h1 id="team"></h1>
+  </div>
+
 <script>
-  const teams = 4; // 👈 CHANGE THIS TO THE NUMBER OF TEAMS
-  let n = Math.floor(Math.random() * teams) + 1;
-  document.getElementById("team").innerText = n;
+  // 👇 Update team names here
+  const teamNames = ["Narasimham", "Shajipapan", "Anjooran", "Michael Appan"];
+
+  const storageKey = "fruitTeam";
+  let saved = localStorage.getItem(storageKey);
+
+  if (saved) {
+    document.getElementById("team").innerText = saved;
+  } else {
+    let n = Math.floor(Math.random() * teamNames.length);
+    let selectedTeam = teamNames[n];
+    localStorage.setItem(storageKey, selectedTeam);
+    document.getElementById("team").innerText = selectedTeam;
+  }
 </script>
+
 </body>
 </html>
